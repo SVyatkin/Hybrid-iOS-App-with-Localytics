@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd"
+>
+<html lang="en">
+    <head>
+        <script type="text/javascript">
+            function tagEvent(event)
+            {
+                tagEvent(event, nil)
+            }
+            
+            function tagEvent(event, attributes)
+            {
+                if (event)
+                {
+                    var redirectURL = "localytics://?event=" + event;
+                    if (attributes)
+                    {
+                        var serializedAttributes = JSON.stringify(attributes);
+                        if(serializedAttributes)
+                        {
+                            redirectURL += "&attributes=" + serializedAttributes;
+                        }
+                    }
+                    window.location = redirectURL;
+                }
+                
+            }
+        </script>
+    </head>
+    <body onload="tagEvent('Example 3', {'Level' : 6, 'Gold' : 40, 'Class' : 'Wizard'});"/>
+</html>
+
+<script type="text/javascript">
